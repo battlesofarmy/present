@@ -3,7 +3,9 @@
 import { useState } from "react";
 
 export default function FingerprintAuth() {
-  const [fingerprintStatus, setFingerprintStatus] = useState(null);
+  // const [fingerprintStatus, setFingerprintStatus] = useState(null);
+  const [fingerprintStatus, setFingerprintStatus] = useState<string | null>(null);
+
 
   // const startAuthentication = async () => {
   //   try {
