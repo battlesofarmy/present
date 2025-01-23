@@ -28,7 +28,8 @@ export default function Page() {
       };
 
       // Send data to the backend using axios
-      const response = await axios.post("http://localhost:5000/stu/present", biometricData);
+      // const response = await axios.post("http://localhost:5000/stu/present", biometricData);
+      const response = await axios.post("https://api.muntasir3301.xyz/stu/present", biometricData);
       console.log("Biometric registered successfully:", response.data);
 
 
