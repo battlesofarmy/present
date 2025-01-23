@@ -3,58 +3,7 @@
 import { useState } from "react";
 
 export default function FingerprintAuth() {
-  // const [fingerprintStatus, setFingerprintStatus] = useState(null);
   const [fingerprintStatus, setFingerprintStatus] = useState(null);
-
-
-  // const startAuthentication = async () => {
-  //   try {
-  //     const response = await fetch("http://localhost:5000/api/getChallenge"); // Full URL for backend
-  //     // const response = await fetch("/api/getChallenge"); // Backend to generate a challenge
-  //     const { challenge } = await response.json();
-
-  //     const publicKeyCredentialCreationOptions = {
-  //       publicKey: {
-  //         challenge: Uint8Array.from(challenge, (c) => c.charCodeAt(0)),
-  //         rp: { name: "Your App" },
-  //         user: {
-  //           id: Uint8Array.from("user-id", (c) => c.charCodeAt(0)), // Replace with the actual user ID
-  //           name: "user@example.com",
-  //           displayName: "User Name",
-  //         },
-  //         pubKeyCredParams: [{ type: "public-key", alg: -7 }],
-  //         timeout: 60000,
-  //         authenticatorSelection: { authenticatorAttachment: "platform" },
-  //         attestation: "direct",
-  //       },
-  //     };
-
-  //     const credential = await navigator.credentials.create(
-  //       publicKeyCredentialCreationOptions
-  //     );
-
-  //     if (credential) {
-  //       // Send credential to the backend for verification
-  //       const verificationResponse = await fetch(
-  //         "http://localhost:5000/api/registerFingerprint",
-  //         {
-  //           method: "POST",
-  //           headers: { "Content-Type": "application/json" },
-  //           body: JSON.stringify({ credential }),
-  //         }
-  //       );
-
-  //       if (verificationResponse.ok) {
-  //         setFingerprintStatus("Fingerprint registered successfully!");
-  //       } else {
-  //         setFingerprintStatus("Fingerprint registration failed!");
-  //       }
-  //     }
-  //   } catch (err) {
-  //     console.error("Error during fingerprint registration:", err);
-  //     setFingerprintStatus("Error occurred. Try again.");
-  //   }
-  // };
 
 
 
@@ -69,14 +18,13 @@ export default function FingerprintAuth() {
 
 
       
-      console.log("Starting fingerprint authentication...");
+      // console.log("Starting fingerprint authentication...");
+      // // const response = await fetch("https://api.muntasir3301.xyz/api/getChallenge");
       // const response = await fetch("http://localhost:5000/api/getChallenge");
-      // const response = await fetch("http://192.168.0.194:5000/api/getChallenge");
-      const response = await fetch("https://api.muntasir3301.xyz/api/getChallenge");
-      console.log("Response from /getChallenge:", response);
+      // console.log("Response from /getChallenge:", response);
   
-      const { challenge } = await response.json();
-      console.log("Received challenge:", challenge);
+      // const { challenge } = await response.json();
+      // console.log("Received challenge:", challenge);
   
       const publicKeyCredentialCreationOptions = {
         publicKey: {
@@ -99,22 +47,26 @@ export default function FingerprintAuth() {
       const credential = await navigator.credentials.create(publicKeyCredentialCreationOptions);
       console.log("Credential received:", credential);
   
-      if (credential) {
-        // const verificationResponse = await fetch("http://localhost:5000/api/registerFingerprint", {
-        const verificationResponse = await fetch("https://api.muntasir3301.xyz/api/registerFingerprint", {
+      // if (credential) {
+      //   // const verificationResponse = await fetch("https://api.muntasir3301.xyz/api/registerFingerprint", {
+        const verificationResponse = await fetch("http://localhost:5000/api/registerFingerprint", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ credential }),
         });
         console.log("Verification response:", verificationResponse);
   
-        if (verificationResponse.ok) {
-          setFingerprintStatus("Fingerprint registered successfully!");
-        } else {
-          console.log("Verification failed:", await verificationResponse.text());
-          setFingerprintStatus("Fingerprint registration failed!");
-        }
-      }
+      //   if (verificationResponse.ok) {
+      //     setFingerprintStatus("Fingerprint registered successfully!");
+      //   } else {
+      //     console.log("Verification failed:", await verificationResponse.text());
+
+      //     setFingerprintStatus("Fingerprint registration failed!");
+      //   }
+      // }
+
+
+
     } catch (err) {
       console.error("Error during fingerprint registration:", err);
       setFingerprintStatus("Error occurred. Try again.");
