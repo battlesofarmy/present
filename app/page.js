@@ -71,7 +71,8 @@ export default function FingerprintAuth() {
       
       console.log("Starting fingerprint authentication...");
       // const response = await fetch("http://localhost:5000/api/getChallenge");
-      const response = await fetch("http://192.168.0.194:5000/api/getChallenge");
+      // const response = await fetch("http://192.168.0.194:5000/api/getChallenge");
+      const response = await fetch("https://api.muntasir3301.xyz/api/getChallenge");
       console.log("Response from /getChallenge:", response);
   
       const { challenge } = await response.json();
@@ -100,7 +101,7 @@ export default function FingerprintAuth() {
   
       if (credential) {
         // const verificationResponse = await fetch("http://localhost:5000/api/registerFingerprint", {
-        const verificationResponse = await fetch("http://192.168.0.194:5000/api/registerFingerprint", {
+        const verificationResponse = await fetch("https://api.muntasir3301.xyz/api/registerFingerprint", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ credential }),
