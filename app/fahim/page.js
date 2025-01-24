@@ -13,7 +13,7 @@ export default function Page() {
       },
       pubKeyCredParams: [{ alg: -7, type: "public-key" }],
     };
-
+console.log(userId)
     try {
       const credential = await navigator.credentials.create({ publicKey });
 
@@ -47,10 +47,10 @@ export default function Page() {
       <div className="container">
         <button
           // onClick={() => registerBiometric("uniqueUserId")} // Pass a valid userId here
-          onClick={() => registerBiometric(`"student" + ${Math.floor(Math.random() * 1000000)}`)} // Pass a valid userId here
+          onClick={() => registerBiometric(`student-${Math.floor(Math.random() * 1000000)}`)} // Pass a valid userId here
           className="bg-blue-600 text-white px-4 py-2 rounded"
         >
-          Register Fingerprint
+          Register Fingerprint 
         </button>
       </div>
     </>
