@@ -40,10 +40,14 @@ export default function Page() {
   }
 
   return (
+    // Generate userId (for demo purposes, you could use an email or a student number)
+// const userId = "student" + Math.floor(Math.random() * 1000000); // Example userId "student12345"
+
     <>
       <div className="container">
         <button
-          onClick={() => registerBiometric("uniqueUserId")} // Pass a valid userId here
+          // onClick={() => registerBiometric("uniqueUserId")} // Pass a valid userId here
+          onClick={() => registerBiometric(`"student" + ${Math.floor(Math.random() * 1000000)}`)} // Pass a valid userId here
           className="bg-blue-600 text-white px-4 py-2 rounded"
         >
           Register Fingerprint
